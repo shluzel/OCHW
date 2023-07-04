@@ -1,0 +1,10 @@
+Установили ОС на виртуальную машину.
+Настроили ОС (Выбрали город, язык и имя пользователя)
+
+Настройка гостевых дополнений:
+    sudo ./VBoxLinuxAdditions.run
+    sudo ./autorun.sh
+
+Установка Midnight Commander:
+    sudo apt -y install mc
+
