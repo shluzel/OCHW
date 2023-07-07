@@ -1,0 +1,52 @@
+1. Создать каталоги students и mentors в домашней директории, 
+а в них — текстовые файлы students_list.txt и mentors_list.txt соответственно.
+
+Создали две папки:
+    darya@ubuntu16VirtualBox:~$ mkdir students
+    darya@ubuntu16VirtualBox:~$ mkdir mentors
+
+2. Открыть созданные в п.1 файлы в любом текстовом редакторе и заполнить их (в соответствии с названием) 
+списком Ваших одногруппников и наставников на данном потоке.
+
+Перешли в папку students и создали там файл, также заполнили его:    
+    darya@ubuntu16VirtualBox:~$ cd students
+    darya@ubuntu16VirtualBox:~/students$ cat students_list.txt
+    Sycheva Darya
+    Julia Turovceva
+    Ruslan Gilmutdinov
+    Andrey Krylov
+    Radmir Tulyakov
+    Nikita Shelepkin
+    Artemiy Smagluk 
+        #ctrl+D для сохранения
+    darya@ubuntu16VirtualBox:~/students$ 
+
+Перешли в папку mentors и создали там файл, также заполнили его:  
+    darya@ubuntu16VirtualBox:~/students$ cd ..
+    darya@ubuntu16VirtualBox:~$ cd mentors
+    darya@ubuntu16VirtualBox:~/mentors$ cat > mentors_list.txt
+    Dmitry Ronzhin
+    Stanislav Nickulichev
+    Mikhail Uzhakov
+    Julia Popova
+    Derkach Aleksey
+        #ctrl+D для сохранения
+    darya@ubuntu16VirtualBox:~/mentors$ 
+
+3. Переместите файл mentors_list.txt в папку students.
+
+    darya@ubuntu16VirtualBox:~/mentors$ cd ..
+    darya@ubuntu16VirtualBox:~$ mv mentors/mentors_list.txt students/
+    darya@ubuntu16VirtualBox:~$ 
+
+4. Удалите папку mentors.
+
+    darya@ubuntu16VirtualBox:~$ rmdir mentors/
+
+5. Переименуйте папку students в students_and_mentors.
+
+    darya@ubuntu16VirtualBox:~$ mv students students_and_mentors
+
+6. Удалите папку students_and_mentors вместе с содержимым.
+
+    darya@ubuntu16VirtualBox:~$ rm -r students_and_mentors
