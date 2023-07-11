@@ -1,0 +1,69 @@
+1. Управление пользователями:
+    a. Создать нового пользователя:
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/newuser -m newuser
+
+    b. Убедиться, что информация о нем появилась в соответствующих файлах в системе:
+        darya@ubuntu16VirtualBox:~$ tail /etc/passwd
+        ...
+        newuser:x:1001:1001::/home/newuser:/bin/bash
+
+        darya@ubuntu16VirtualBox:~$ tail /etc/group
+        ...
+        newuser:x:1001:
+
+    c. Удалить созданного пользователя:
+        darya@ubuntu16VirtualBox:~$ sudo userdel newuser -r
+        userdel: newuser mail spool (/var/mail/newuser) not found
+
+
+2. Управление группами:
+    a. Создать группу:
+        darya@ubuntu16VirtualBox:~$ sudo groupadd programmers   //группа programmers
+        darya@ubuntu16VirtualBox:~$ sudo groupadd testers   //группа testers
+
+        //Пользователи для групп
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/programmer1 -m programmer1
+        ...
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/programmer2 -m programmer2
+        ...
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/tester1 -m tester1
+        ...
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/tester2 -m tester2
+        ...
+        
+        //Добавим пользователей в их группы
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G testers tester1
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G testers tester2
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G programmers programmer1
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G programmers programmer2
+
+        //Проверка групп
+        darya@ubuntu16VirtualBox:~$ tail /etc/group
+        ...
+        programmers:x:1001:
+        testers:x:1002:
+
+    b. Попрактиковаться в смене групп у пользователей:
+        darya@ubuntu16VirtualBox:~$ sudo usermod -g programmers tester1
+        darya@ubuntu16VirtualBox:~$ sudo usermod -g testers programmer1
+
+        darya@ubuntu16VirtualBox:~$ sudo deluser programmer1 programmers
+        /usr/sbin/deluser: The user `programmer1' is not a member of group `programmers'.
+        darya@ubuntu16VirtualBox:~$ sudo deluser tester1 testers
+        /usr/sbin/deluser: The user `tester1' is not a member of group `testers'.
+
+    c. Добавить пользователя в группу, не меняя основной:
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G testers programmer1
+
+    d. Удалить пользователя из группы: 
+        darya@ubuntu16VirtualBox:~$ sudo deluser tester2 testers
+        Removing user `tester2' from group `testers' ...
+        Done.
+
+
+3. Работа с группами.
+    a. Создать пользователя с правами суперпользователя. Проверить результат:
+        darya@ubuntu16VirtualBox:~$ sudo useradd -s /bin/bash -d /home/mainadmin -m mainadmin
+        darya@ubuntu16VirtualBox:~$ sudo usermod -a -G sudo mainadmin
+        darya@ubuntu16VirtualBox:~$ groups mainadmin
+        mainadmin : mainadmin sudo
