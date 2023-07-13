@@ -1,0 +1,26 @@
+1. Настроить iptables: разрешить подключения только на 22-й и 80-й порты:
+
+    darya@ubuntu16VirtualBox:~$ sudo iptables -P INPUT DROP
+    darya@ubuntu16VirtualBox:~$ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
+    darya@ubuntu16VirtualBox:~$ sudo iptables -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
+
+2. Настроить проброс портов локально с порта 80 на порт 8080:
+
+    darya@ubuntu16VirtualBox:~$ sed -i 's/^\tlisten 80/\tlisten 8080/' /etc/nginx/sites-enabled/default
+    darya@ubuntu16VirtualBox:~$ systemctl restart nginx
+    darya@ubuntu16VirtualBox:~$ iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+    darya@ubuntu16VirtualBox:~$ iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+3. Запретить любой входящий трафик с IP-адреса 3.4.5.6:
+
+    darya@ubuntu16VirtualBox:~$ sudo iptables -t filter -A INPUT -s 3.4.5.6 -j DROP
+
+4. Запустите mc. Используя ps, найдите PID процесса, завершите процесс, передав ему сигнал 9:
+
+    darya@ubuntu16VirtualBox:~$ mc
+    darya@ubuntu16VirtualBox:~$ ps ax|grep mc
+        6135 pts/4    S+     0:00 mc
+        6174 pts/20   S+     0:00 grep --color=auto mc
+    darya@ubuntu16VirtualBox:~$ kill -9 6135
+    darya@ubuntu16VirtualBox:~$ ps ax|grep mc
+        6178 pts/20   S+     0:00 grep --color=auto mc
