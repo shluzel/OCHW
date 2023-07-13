@@ -1,0 +1,32 @@
+1. Подключить репозиторий с nginx любым удобным способом, установить nginx и потом удалить nginx, используя утилиту dpkg:
+
+        darya@ubuntu16VirtualBox:~$ sudo apt install curl
+            Reading package lists... Done
+                ...
+            Setting up curl (7.47.0-1ubuntu2.19) ...
+        darya@ubuntu16VirtualBox:~$ curl -fsSL https://nginx.org/keys/nginx_signing.key
+            -----BEGIN PGP PUBLIC KEY BLOCK-----
+            Version: GnuPG v2.0.22 (GNU/Linux)
+                ...
+            -----END PGP PUBLIC KEY BLOCK-----
+        darya@ubuntu16VirtualBox:~$ sudo apt update
+            Hit:1 http://ru.archive.ubuntu.com/ubuntu xenial InRelease
+                ...
+            3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+        darya@ubuntu16VirtualBox:~$ sudo apt install -y nginx
+            Reading package lists... Done
+                ...
+            Processing triggers for ufw (0.35-0ubuntu2) ...
+        darya@ubuntu16VirtualBox:~$ sudo dpkg -r nginx
+            (Reading database ... 213134 files and directories currently installed.)
+            Removing nginx (1.10.3-0ubuntu0.16.04.5) ...
+
+2. Установить пакет на свой выбор, используя snap:
+
+    darya@ubuntu16VirtualBox:~$ snap search gimp
+        Name  Version  Publisher     Notes  Summary
+        gimp  2.10.22  snapcrafters  -      GNU Image Manipulation Program
+    darya@ubuntu16VirtualBox:~$ sudo snap install gimp
+        2023-07-13T18:30:10+05:00 INFO Waiting for automatic snapd restart...
+        gimp 2.10.22 from Snapcrafters installed
+    darya@ubuntu16VirtualBox:~$ gimp
