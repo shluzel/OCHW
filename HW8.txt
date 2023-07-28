@@ -12,7 +12,46 @@
     Reading package lists... Done
         ...
     Setting up docker (1.5-1) ...
-    darya@ubuntu16VirtualBox:~$
+    
+    darya@ubuntu16VirtualBox:~$ sudo groupadd docker
+    groupadd: group 'docker' already exists
+    darya@ubuntu16VirtualBox:~$ sudo usermod -aG docker $USER
+    darya@ubuntu16VirtualBox:~$ tail /etc/group
+    vboxdrmipc:x:998:
+    programmers:x:1001:programmer2,tester1
+    testers:x:1002:tester2,programmer1
+    tester2:x:1003:
+    tester1:x:1004:
+    programmer1:x:1005:
+    programmer2:x:1006:
+    mainadmin:x:1007:
+    mysql:x:129:
+    docker:x:130:darya
+    darya@ubuntu16VirtualBox:~$ sudo service docker restart
+    darya@ubuntu16VirtualBox:~$ newgrp docker
+    darya@ubuntu16VirtualBox:~$ docker run hello-world
+
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+    To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+        (i386)
+    3. The Docker daemon created a new container from that image which runs the
+        executable that produces the output you are currently reading.
+    4. The Docker daemon streamed that output to the Docker client, which sent it
+        to your terminal.
+
+    To try something more ambitious, you can run an Ubuntu container with:
+    $ docker run -it ubuntu bash
+
+    Share images, automate workflows, and more with a free Docker ID:
+    https://hub.docker.com/
+
+    For more examples and ideas, visit:
+    https://docs.docker.com/get-started/
+
 
 2. Запустить контейнер с Ubuntu:
 
