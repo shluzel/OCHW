@@ -1,0 +1,72 @@
+1. Установить Docker:
+    darya@ubuntu16VirtualBox:~$ sudo apt install docker.io
+    [sudo] password for darya: 
+    Reading package lists... Done
+        ...
+    After this operation, 200 MB of additional disk space will be used.
+    Do you want to continue? [Y/n] y
+    Get:1 http://ru.archive.ubuntu.com/ubuntu xenial/universe i386 pigz i386 2.3.1-2 [56,3 kB]
+    ...
+    Processing triggers for systemd (229-4ubuntu21.31) ...
+    darya@ubuntu16VirtualBox:~$ sudo apt install docker -y
+    Reading package lists... Done
+        ...
+    Setting up docker (1.5-1) ...
+    darya@ubuntu16VirtualBox:~$
+
+2. Запустить контейнер с Ubuntu:
+
+    darya@ubuntu16VirtualBox:~$ sudo docker search ubuntu
+    [sudo] password for darya: 
+    NAME                             DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+    ubuntu                           Ubuntu is a Debian-based Linux operating sys…   16213               [OK]                
+    websphere-liberty                WebSphere Liberty multi-architecture images …   296                 [OK]                
+    ubuntu-upstart                   DEPRECATED, as is Upstart (find other proces…   115                 [OK]                
+    neurodebian                      NeuroDebian provides neuroscience research s…   103                 [OK]                
+    ubuntu/nginx                     Nginx, a high-performance reverse proxy & we…   96                                      
+    ubuntu/squid                     Squid is a caching proxy for the Web. Long-t…   63                                      
+    open-liberty                     Open Liberty multi-architecture images based…   61                  [OK]                
+    ubuntu/apache2                   Apache, a secure & extensible open-source HT…   59                                      
+    ubuntu/bind9                     BIND 9 is a very flexible, full-featured DNS…   57                                      
+    ubuntu-debootstrap               DEPRECATED; use "ubuntu" instead                52                  [OK]                
+    ubuntu/mysql                     MySQL open source fast, stable, multi-thread…   51                                      
+    ubuntu/prometheus                Prometheus is a systems and service monitori…   44                                      
+    ubuntu/kafka                     Apache Kafka, a distributed event streaming …   32                                      
+    ubuntu/postgres                  PostgreSQL is an open source object-relation…   31                                      
+    ubuntu/redis                     Redis, an open source key-value store. Long-…   19                                      
+    ubuntu/dotnet-aspnet             Chiselled Ubuntu runtime image for ASP.NET a…   10                                      
+    ubuntu/zookeeper                 ZooKeeper maintains configuration informatio…   9                                       
+    ubuntu/grafana                   Grafana, a feature rich metrics dashboard & …   9                                       
+    ubuntu/dotnet-deps               Chiselled Ubuntu for self-contained .NET & A…   9                                       
+    ubuntu/prometheus-alertmanager   Alertmanager handles client alerts from Prom…   9                                       
+    ubuntu/dotnet-runtime            Chiselled Ubuntu runtime image for .NET apps…   9                                       
+    ubuntu/memcached                 Memcached, in-memory keyvalue store for smal…   5                                       
+    ubuntu/telegraf                  Telegraf collects, processes, aggregates & w…   4                                       
+    ubuntu/cortex                    Cortex provides storage for Prometheus. Long…   3                                       
+    ubuntu/cassandra                 Cassandra, an open source NoSQL distributed …   2
+
+    darya@ubuntu16VirtualBox:~$ docker pull ubuntu:16.04
+    16.04: Pulling from library/ubuntu
+    1335d7ebdbbb: Pull complete 
+    ffa6a227af79: Pull complete 
+    ab3928723c2c: Pull complete 
+    e468001dd2f3: Pull complete 
+    Digest: sha256:1f1a2d56de1d604801a9671f301190704c25d604a416f59e03c04f5c6ffee0d6
+    Status: Downloaded newer image for ubuntu:16.04
+    darya@ubuntu16VirtualBox:~$ docker run -it ubuntu:16.04
+    root@3014acc034e4:/# cat /etc/os-release
+    NAME="Ubuntu"
+    VERSION="16.04.7 LTS (Xenial Xerus)"
+    ID=ubuntu
+    ID_LIKE=debian
+    PRETTY_NAME="Ubuntu 16.04.7 LTS"
+    VERSION_ID="16.04"
+    HOME_URL="http://www.ubuntu.com/"
+    SUPPORT_URL="http://help.ubuntu.com/"
+    BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+    VERSION_CODENAME=xenial
+    UBUNTU_CODENAME=xenial
+    root@3014acc034e4:/# exit               
+    exit
+    darya@ubuntu16VirtualBox:~$ 
+
